@@ -11,18 +11,21 @@ const CardList = () => {
     <>
       {postList.length === 0 && (
         <>
-          <h4>List is Empty</h4>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => {
-              fetch("https://dummyjson.com/posts")
-                .then((res) => res.json())
-                .then((data) => fetchPost(data.posts));
-            }}
-          >
-            Fetch Posts
-          </button>
+          <center>
+            <h4>List is Empty</h4>
+            <br />
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => {
+                fetch("https://dummyjson.com/posts")
+                  .then((res) => res.json())
+                  .then((data) => fetchPost(data.posts));
+              }}
+            >
+              Fetch Posts
+            </button>
+          </center>
         </>
       )}
       {postList.map((item, index) => (
