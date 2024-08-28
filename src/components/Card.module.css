@@ -1,0 +1,9 @@
+.container {
+  margin: 10px 10px;
+  border: 1px solid rebeccapurple;
+  border-radius: 10px;
+  width: 20rem;
+}
+.reactions {
+  float: inherit;
+}

@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  /* margin: 10px; */
+  flex-wrap: wrap;
+  /* border: 0.1px solid rebeccapurple;
+  border-radius: 10px; */
+  width: 100%;
+}
