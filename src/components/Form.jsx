@@ -4,61 +4,101 @@ import { PostListContext } from "../store/PostList-store";
 const Form = () => {
   const { addNewPost } = useContext(PostListContext);
   let title = useRef();
-  let description = useRef();
-
+  let body = useRef();
+  let userId = useRef();
+  let id = useRef();
+  let likes = useRef();
+  let dislikes = useRef();
+  let tags = useRef();
+  let obj;
   return (
-    <>
-      <form
-        onSubmit={(event) => {
-          // let postObj = { title, description };
-          addNewPost(title.current.value, description.current.value);
-          title.current.value = "";
-          description.current.value = "";
-          console.log("hi");
-          event.preventDefault();
-        }}
-      >
-        <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
-            Title
+    <form
+      onSubmit={(event) => {
+        obj = {
+          title: title.current.value,
+          body: body.current.value,
+          userId: userId.current.value,
+          id: id.current.value,
+          reactions: {
+            likes: likes.current.value,
+            dislikes: dislikes.current.value,
+          },
+          tags: tags.current.value.split(","),
+        };
+        addNewPost(obj);
+        event.preventDefault();
+      }}
+    >
+      <div className="row g-3">
+        <div className="col-sm-6">
+          <label htmlFor="firstName" className="form-label">
+            UserId
           </label>
           <input
             type="text"
-            ref={title}
             className="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="firstName"
+            placeholder=""
+            required=""
+            ref={userId}
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
+          <div className="invalid-feedback">Valid first name is required.</div>
+        </div>
+
+        <div className="col-sm-6">
+          <label htmlFor="lastName" className="form-label">
+            Id
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="lastName"
+            placeholder=""
+            required=""
+            ref={id}
+          />
+          <div className="invalid-feedback">Valid last name is required.</div>
+        </div>
+
+        <div className="col-12">
+          <label className="form-label">Title</label>
+          <div className="input-group has-validation">
+            <input type="text" className="form-control" ref={title} />
+            <div className="invalid-feedback">Your Title is required.</div>
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">
-            Description
+
+        <div className="col-12">
+          <label htmlFor="email" className="form-label">
+            Body
           </label>
-          <input
-            type="text"
-            ref={description}
-            className="form-control"
-            id="exampleInputPassword1"
-          />
+          <textarea className="form-control" rows="3" ref={body}></textarea>
         </div>
-        <div className="mb-3 form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-            id="exampleCheck1"
-          />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
+
+        <div className="col-12">
+          <label htmlFor="address" className="form-label">
+            Tags
           </label>
+          <input type="text" className="form-control" ref={tags} />
         </div>
-        <button type="submit" className="btn btn-primary">
+
+        <div className="col-md-3">
+          <label htmlFor="zip" className="form-label">
+            Likes
+          </label>
+          <input type="text" className="form-control" ref={likes} />
+        </div>
+        <div className="col-md-3">
+          <label htmlFor="zip" className="form-label">
+            Dislikes
+          </label>
+          <input type="text" className="form-control" ref={dislikes} />
+        </div>
+        <button className="w-75 mx-auto btn btn-primary btn-lg" type="submit">
           Submit
         </button>
-      </form>
-    </>
+      </div>
+    </form>
   );
 };
 

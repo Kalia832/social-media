@@ -14,12 +14,15 @@ const App = () => {
   return (
     <>
       <PostListContextProvider>
-        <Header></Header>
+        <Header
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+        ></Header>
         <div className="container-Whole-content">
-          <Sidebar
+          {/* <Sidebar
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
-          ></Sidebar>
+          ></Sidebar> */}
           <div>
             {selectedTab === "Home" && (
               <PostContainer>
@@ -27,6 +30,11 @@ const App = () => {
               </PostContainer>
             )}
             {selectedTab === "Create Post" && (
+              <Container>
+                <Form></Form>
+              </Container>
+            )}
+            {selectedTab === "TicTacTow" && (
               <Container>
                 <Form></Form>
               </Container>

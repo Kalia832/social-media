@@ -11,25 +11,26 @@ export const PostListContext = createContext(DEFAULT_CONTEXT);
 const postListReducer = (currentState, action) => {
   let updatedState = currentState;
   if (action.type === "addNewPostAction") {
+    updatedState = [...currentState, action.payload.obj];
   } else if (action.type === "deletePostAction") {
     updatedState = currentState.filter((item) => item != action.payload.obj);
   } else if (action.type === "FETCH_POST") {
     updatedState = action.payload.posts;
   }
-  // console.log(updatedState);
+  console.log(updatedState);
   return updatedState;
 };
 
 const PostListContextProvider = ({ children }) => {
   const [postList, dispatchPostList] = useReducer(postListReducer, []);
-  const addNewPost = (title, description) => {
+  const addNewPost = (obj) => {
     const addNewPostAction = {
       type: "addNewPostAction",
       payload: {
-        title,
-        description,
+        obj,
       },
     };
+    console.log(obj);
     dispatchPostList(addNewPostAction);
   };
   const deletePost = (obj) => {

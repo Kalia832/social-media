@@ -11,7 +11,7 @@ const CardList = () => {
     <>
       {postList.length === 0 && (
         <>
-          <center>
+          <div className="d-block mx-auto my-4 mb-4">
             <h4>List is Empty</h4>
             <br />
             <button
@@ -25,7 +25,7 @@ const CardList = () => {
             >
               Fetch Posts
             </button>
-          </center>
+          </div>
         </>
       )}
       {postList.map((item, index) => (

@@ -1,8 +1,6 @@
 .itemContainer {
-  border: 2px solid red;
+  border: 0.1px solid red;
   border-radius: 5px;
-  height: 300px;
-  width: 500px;
   padding: 10px;
-  margin: 10px;
+  max-width: 400px;
 }
